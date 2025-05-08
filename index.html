@@ -1,46 +1,177 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokedex</title>
 
     <!-- Normalize CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <!-- Font Roboto -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Nosso CSS -->
-    <link rel="stylesheet" href="/assets/css/global.css">
-    <link rel="stylesheet" href="/assets/css/pokedex.css">
-</head>
+    <link rel="stylesheet" href="./assets/css/global.css" />
+    <link rel="stylesheet" href="./assets/css/pokedex.css" />
+  </head>
 
-<body>
+  <body>
     <section class="content">
-        <h1>Pokedex</h1>
+      <div class="search-container">
+        <h1>What Pokemon are you looking for?</h1>
+        <div class="search-box">
+          <input
+            type="text"
+            placeholder="Search Pokemon, Move, Ability etc"
+            id="searchInput"
+          />
+        </div>
 
+        <div class="categories">
+          <button class="category-btn all active">
+            <img
+              src="./assets/icons/all.svg"
+              alt=""
+              class="type-icon"
+              aria-hidden="true"
+            />
+            All
+          </button>
+          <button class="category-btn favorite">
+            <img
+              src="./assets/icons/favorite.svg"
+              alt=""
+              class="type-icon"
+              aria-hidden="true"
+            />
+            Favorites
+          </button>
+          <button class="category-btn grass">
+            <img
+              src="./assets/icons/grass.svg"
+              alt=""
+              class="type-icon"
+              aria-hidden="true"
+            />
+            Grass
+          </button>
+          <button class="category-btn normal">
+            <img
+              src="./assets/icons/normal.svg"
+              alt=""
+              class="type-icon"
+              aria-hidden="true"
+            />
+            Normal
+          </button>
+          <button class="category-btn fire">
+            <img
+              src="./assets/icons/fire.svg"
+              alt=""
+              class="type-icon"
+              aria-hidden="true"
+            />
+            Fire
+          </button>
+          <button class="category-btn water">
+            <img
+              src="./assets/icons/water.svg"
+              alt=""
+              class="type-icon"
+              aria-hidden="true"
+            />
+            Water
+          </button>
+          <button class="category-btn electric">
+            <img
+              src="./assets/icons/electric.svg"
+              alt=""
+              class="type-icon"
+              aria-hidden="true"
+            />
+            Electric
+          </button>
+          <button class="category-btn flying">
+            <img
+              src="./assets/icons/flying.svg"
+              alt=""
+              class="type-icon"
+              aria-hidden="true"
+            />
+            Flying
+          </button>
+          <button class="category-btn ground">
+            <img
+              src="./assets/icons/ground.svg"
+              alt=""
+              class="type-icon"
+              aria-hidden="true"
+            />
+            Ground
+          </button>
+        </div>
+      </div>
+
+      <div class="pokemon-content">
         <ol id="pokemonList" class="pokemons">
-            <!-- ..... Pokemons here ..... -->
+          <!-- Pokemons will be loaded here -->
         </ol>
 
         <div class="pagination">
-            <button id="loadMoreButton" type="button">
-                Load More
-            </button>
+          <button id="loadMoreButton" type="button">Load More</button>
         </div>
+      </div>
+
+      <div class="news-section">
+        <div class="news-header">
+          <h2>Pokémon News</h2>
+          <a href="#" class="view-all">View All</a>
+        </div>
+        <div class="news-items">
+          <!-- News items will be loaded here -->
+        </div>
+      </div>
     </section>
 
     <!-- Nosso JS -->
-    <script src="/assets/js/pokemon-model.js"></script>
-    <script src="/assets/js/poke-api.js"></script>
-    <script src="/assets/js/main.js"></script>
-</body>
+    <script src="./assets/js/pokemon-model.js"></script>
+    <script src="./assets/js/poke-api.js"></script>
+    <script src="./assets/js/main.js"></script>
 
+    <!-- Pokemon Detail Modal -->
+    <div class="modal-overlay" id="pokemonModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="modal-back" onclick="closeModal()">←</button>
+          <button class="modal-close" onclick="closeModal()">×</button>
+          <button class="modal-favorite">♡</button>
+        </div>
+        <div class="pokemon-detail">
+          <!-- Pokemon details will be loaded here -->
+        </div>
+        <div class="detail-tabs">
+          <div class="detail-tab active" data-tab="about">About</div>
+          <div class="detail-tab" data-tab="base-stats">Base Stats</div>
+          <div class="detail-tab" data-tab="evolution">Evolution</div>
+          <div class="detail-tab" data-tab="moves">Moves</div>
+        </div>
+        <div class="tab-content">
+          <!-- Tab content will be loaded here -->
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
